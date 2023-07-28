@@ -18,22 +18,22 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-//@Transactional
+@Transactional
 @SpringBootTest
 class ItemRepositoryTest {
 
     @Autowired
     ItemRepository itemRepository;
 
-    @Autowired
-    PlatformTransactionManager transactionManager;
-    TransactionStatus status;
-
-    @BeforeEach
-    void beforeEach() {
-        //트랜잭션 시작
-        status = transactionManager.getTransaction(new DefaultTransactionDefinition());
-    }
+//    @Autowired
+//    PlatformTransactionManager transactionManager;
+//    TransactionStatus status;
+//
+//    @BeforeEach
+//    void beforeEach() {
+//        //트랜잭션 시작
+//        status = transactionManager.getTransaction(new DefaultTransactionDefinition());
+//    }
 
     @AfterEach
     void afterEach() {
@@ -42,7 +42,7 @@ class ItemRepositoryTest {
             ((MemoryItemRepository) itemRepository).clearStore();
         }
         //트랜잭션 롤백
-        transactionManager.rollback(status);
+//        transactionManager.rollback(status);
     }
 
     @Test
